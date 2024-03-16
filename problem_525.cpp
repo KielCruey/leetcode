@@ -8,13 +8,9 @@ using namespace std;
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
-        int results = 0;
+        checkArrayIsEven(nums); // only works on even number size vectors
 
-        checkArrayIsEven(nums);
-
-        results = checkVector(nums);
-
-        return results;
+        return checkVector(nums);;
     }
 
     // if vector isn't even, remove last element
@@ -37,25 +33,25 @@ public:
         return (numZeros == numOnes) ? true : false;
     }
 
+    // looks if the vector has same amout of 1's and 0's, if not decrease vector size and does it again
     int checkVector(vector<int>& nums) {
-        
         bool isEqual = checkEqual(nums);
 
-        if (isEqual)
-            return static_cast<int>(nums.size());
-        else {
+        if (!isEqual) {
             nums.pop_back();
             nums.pop_back();
 
             checkVector(nums);
         }
+
+        return static_cast<int>(nums.size());
     }
 };
 
 int main() {
     //std::vector<int> nums = { 0,1 };
-    std::vector<int> nums = { 0,1,0 };
-    //std::vector<int> nums = { 0, 1, 1, 0 , 1, 1, 1, 1, 1 };
+    //std::vector<int> nums = { 0,1,0 };
+    std::vector<int> nums = { 0, 1, 1, 0 , 1, 1, 1, 1, 1, 1, 1 };
 
     Solution s;
     auto index = s.findMaxLength(nums);
