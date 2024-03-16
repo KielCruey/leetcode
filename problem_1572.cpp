@@ -11,7 +11,6 @@ public:
     }
 };
 
-
 vector<vector<int>> initialize3x3() {
     vector<int> v1{ 1, 2, 3 };
     vector<int> v2{ 4, 5, 6 };
@@ -37,7 +36,7 @@ int main() {
     vector<vector<int>> mat = initialize3x3();
 
     Solution s;
-    //auto index = s.diagonalSum(nums);
+    auto index = s.diagonalSum(mat);
 
     return 0;
 }
