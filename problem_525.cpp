@@ -8,50 +8,38 @@ using namespace std;
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
-        checkArrayIsEven(nums); // only works on even number size vectors
-
-        return checkVector(nums);;
-    }
-
-    // if vector isn't even, remove last element
-    void checkArrayIsEven(vector<int>& nums) {
-        // check is reminder -- if so then it's not even
-        if (nums.size() % 2 != 0)
-            nums.pop_back();
-    }
-
-    // checks if there number of 0's and 1's are the same
-    bool checkEqual(vector<int>& nums) {
         int numZeros = 0;
         int numOnes = 0;
 
+        // counts number of ones and zeros
         for (auto i : nums) {
             if (i == 0) numZeros++;
             else numOnes++;
         }
 
-        return (numZeros == numOnes) ? true : false;
+        return checkMaxPairs(numZeros, numOnes);
     }
 
-    // looks if the vector has same amout of 1's and 0's, if not decrease vector size and does it again
-    int checkVector(vector<int>& nums) {
-        bool isEqual = checkEqual(nums);
+    int checkMaxPairs(int numZeros, int numOnes) {
+        int results = 0;
 
-        if (!isEqual) {
-            nums.pop_back();
-            nums.pop_back();
+        if (numZeros > numOnes)
+            results = numOnes;
+        else if (numZeros < numOnes)
+            results = numZeros;
+        else
+            results = numZeros;
 
-            checkVector(nums);
-        }
-
-        return static_cast<int>(nums.size());
+        return 2 * results;
     }
 };
 
 int main() {
-    //std::vector<int> nums = { 0,1 };
-    //std::vector<int> nums = { 0,1,0 };
-    std::vector<int> nums = { 0, 1, 1, 0 , 1, 1, 1, 1, 1, 1, 1 };
+    //std::vector<int> nums = { 0,1 }; // answer 2
+    //std::vector<int> nums = { 0, 1, 0 }; // answer 2
+    //std::vector<int> nums = { 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 }; // answer 4
+    //std::vector<int> nums = { 0, 0, 1, 0, 0, 0, 1, 1 }; // answer 4
+    std::vector<int> nums = {0, 1, 1, 0, 1, 1, 1, 0 };
 
     Solution s;
     auto index = s.findMaxLength(nums);
