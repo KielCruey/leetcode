@@ -4,10 +4,11 @@
 using namespace std;
 
 // 525. Contiguous Array
-
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
+        checkEvenVector(nums);
+
         int numZeros = 0;
         int numOnes = 0;
 
@@ -20,15 +21,14 @@ public:
         return checkMaxPairs(numZeros, numOnes);
     }
 
-    int checkMaxPairs(int numZeros, int numOnes) {
+    void checkEvenVector(vector<int>& nums) {
+        if (nums.size() % 2 != 0 )
+            nums.pop_back();
+    }
+
+    int checkContiguous(int numZeros, int numOnes) {
         int results = 0;
 
-        if (numZeros > numOnes)
-            results = numOnes;
-        else if (numZeros < numOnes)
-            results = numZeros;
-        else
-            results = numZeros;
 
         return 2 * results;
     }
@@ -37,10 +37,10 @@ public:
 int main() {
     //std::vector<int> nums = { 0,1 }; // answer 2
     //std::vector<int> nums = { 0, 1, 0 }; // answer 2
-    //std::vector<int> nums = { 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 }; // answer 4
-    //std::vector<int> nums = { 0, 0, 1, 0, 0, 0, 1, 1 }; // answer 4
-    std::vector<int> nums = {0, 1, 1, 0, 1, 1, 1, 0 };
-
+    std::vector<int> nums = { 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 }; // answer 4
+    //std::vector<int> nums = { 0, 0, 1, 0, 0, 0, 1, 1 }; // answer 6
+    //std::vector<int> nums = { 0, 1, 1, 0, 1, 1, 1, 0 }; // answer 4
+     
     Solution s;
     auto index = s.findMaxLength(nums);
 
