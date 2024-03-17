@@ -7,7 +7,9 @@ using namespace std;
 class Solution {
 public:
     int diagonalSum(vector<vector<int>>& mat) {
+        int size = static_cast<int>(mat.size());
 
+        return size;
     }
 };
 
