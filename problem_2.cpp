@@ -16,6 +16,7 @@ public:
         ListNode* results = nullptr;
         int sumDigit = 0;
         int carryDigit = 0;
+        int resultsLength = 0;
 
         while (l1 != nullptr || l2 != nullptr || carryDigit != 0)
         {
@@ -69,7 +70,28 @@ public:
                 l2 = l2->next;
         }
 
+        results = reverse(results);
+
         return results;
+    }
+
+    // reversing the linked list
+    ListNode* reverse(ListNode* list)
+    {
+        ListNode* current = list;
+        ListNode* previous = nullptr;
+        ListNode* next = nullptr;
+
+        while (current != nullptr)
+        {
+            next = current->next;
+            current->next = previous;
+            previous = current;
+            current = next;
+        }
+
+        current = previous;
+        return current;
     }
 };
 
