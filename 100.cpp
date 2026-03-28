@@ -30,7 +30,6 @@ public:
             if (!results) return false;
         }
             
-        
         if (p->right != nullptr || q->right != nullptr) {
             results = isSameTree(p->right, q->right);
 
