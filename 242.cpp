@@ -31,11 +31,3 @@ public:
         return true;
     }
 };
-
-int main() {
-    Solution solution;
-    std::string s = "dgqztusjuu";
-    std::string t = "dqugjzutsu";
-    bool result = solution.isAnagram(s, t);
-    return 0;
-}
