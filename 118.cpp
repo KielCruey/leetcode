@@ -25,11 +25,18 @@ public:
     }
 
     // pacsal's index -- with 3 base cases
-    int pI(int row, int index) {
+    int pI(std::vector<std::vector<int>> v,int row, int index) {
+        // error cases
         if (row <= 1 && index <= 1)
             return 1;
+
+        // previous num
+        if(row - 1 >= 0 && index - 1 >= 0 && v[row - 1][index] != NULL)
+			return v[row - 1][index -1];
+
         
-		return pI(row - 1, index) + pI(row - 1, index - 1);
+        
+		return pI(v, row - 1, index) + pI(v, row - 1, index - 1);
     }
 };
 
