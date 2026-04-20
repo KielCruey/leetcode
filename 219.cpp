@@ -8,15 +8,21 @@ public:
         std::vector<int>::iterator begin = nums.begin();
         std::vector<int>::iterator end = nums.begin();
 
+        int indexE{}; // end index
+
         for (int i = 0; i < nums.size(); i++) {
-            if (i + k < nums.size())
+            if (i + k < nums.size()) {
                 std::advance(end, k);
-
-            /*
-            while () {
-
+                indexE = i;
             }
-            */
+            
+
+            
+            while (end != nums.end()) {
+                if (*begin == *end)
+                    int q = 1;
+            }
+            
         }
 
 
