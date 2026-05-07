@@ -2,7 +2,7 @@
 
 class Solution {
 public:
-    std::vector<int> generate(int numRows) {
+    std::vector<int> getRow(int numRows) {
         std::vector<int> results;
 		int row = numRows + 1; // levels in pascal triangle start at 0
         
@@ -18,7 +18,7 @@ public:
 
 int main() {
     Solution solution;
-    std::vector<int> result = solution.generate(3);
+    std::vector<int> result = solution.getRow(3);
 
     return 0;
 }
