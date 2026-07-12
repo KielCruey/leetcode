@@ -1,14 +1,15 @@
 #include <string>
+#include <bitset>
 #include <format>
 
 class Solution {
 public:
-    std::string addBinary(std::string a, std::string b) {
-		auto value1 = std::stoll(a, nullptr, 2);
-        auto value2 = std::stoll(b, nullptr, 2);
-        auto sum = value1 + value2;
+    std::string addBinary(std::string a, std::string b) { 
+        std::bitset<1000> bitsA(a); // converts string to binary
+        std::bitset<1000> bitsB(b);
+		std::bitset<1001> sumBits = bitsA.to_ullong() + bitsB.to_ullong();
 
-        return std::format("{:b}", sum);
+        return sumBits.to_string();
     }
 };
 
