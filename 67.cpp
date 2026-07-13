@@ -5,11 +5,11 @@
 class Solution {
 public:
     std::string addBinary(std::string a, std::string b) { 
-        std::bitset<1000> bitsA(a); // converts string to binary
-        std::bitset<1000> bitsB(b);
-		std::bitset<1001> sumBits = bitsA.to_ullong() + bitsB.to_ullong();
+        std::bitset<128> bitsA(a); // converts string to binary
+        std::bitset<128> bitsB(b);
+		std::bitset<128> sumBits = bitsA.to_ullong() + bitsB.to_ullong();
 
-        return sumBits.to_string();
+        return std::to_string(sumBits.to_ullong());
     }
 };
 
