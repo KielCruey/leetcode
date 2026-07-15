@@ -11,8 +11,26 @@ right(right) {}
 class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {
-        TreeNode* tree = root;
+
+
         return root;
+    }
+
+    TreeNode* treeSearch(TreeNode* root, int key) {
+        if (root == nullptr || key == root->val) return root;
+        else if (key < root->val) return treeSearch(root->left, key);
+        else treeSearch(root->right, key);
+    }
+
+    TreeNode* findMinimum(TreeNode* root) {
+        while (root->left != nullptr)
+            root = root->left;
+
+        return root;
+    }
+    
+    TreeNode* treeSuccessor(TreeNode* root) {
+        
     }
 };
 
@@ -26,7 +44,7 @@ int main() {
     TreeNode* six = new TreeNode(6, nullptr, seven);
     TreeNode* root = new TreeNode(5, three, six);
 
-    s.deleteNode(root, 3);
+    TreeNode* t = s.deleteNode(root, 3);
 
     /*
     TreeNode* four = new TreeNode(4);
@@ -35,7 +53,7 @@ int main() {
     TreeNode* six = new TreeNode(6, nullptr, seven);
     TreeNode* root = new TreeNode(5, two, six);
 
-    s.deleteNode(root, 0);
+    TreeNode* t = s.deleteNode(root, 0);
     */
     
     return 0;
