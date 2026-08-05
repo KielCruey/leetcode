@@ -1,10 +1,18 @@
 #include <string>
+#include <stack>
+#include <algorithm> // reverse
 
 class Solution {
 public:
     std::string decodeString(std::string s) {
         std::string r;
-        
+        std::stack<char> cs;
+        std::stack<int> is;
+
+        while (s.size() != 0) {
+            
+        }
+
         return r;
     }
 };
