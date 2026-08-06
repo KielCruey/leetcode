@@ -4,37 +4,41 @@
 class Solution {
 public:
     int compress(std::vector<char>& chars) {
-        if (chars.size() == 0)
-            return 0;
-        else if (chars.size() == 1)
-            return 1;
+        if (chars.size() == 0) return 0;
+        else if (chars.size() == 1) return 1;
 
         int count{};
-        char c{};
+        std::string c{};
         std::string s{};
 
         // initialization
         c = chars[0];
 
-        for (char& i : chars) {
-            if (c == i) {
+        for (int i = 0; i < chars.size(); i++) {
+            if (c[0] == chars[i]) {
                 count++;
             }
             else {
-                s.push_back(c);
+                s.push_back(c[0]);
 
                 if(count != 1)
                     s.push_back(count);
 
-                c = i;
+                c = chars[i];
                 count = 1;
             }
         }
 
-        s.push_back(c);
+        s.push_back(c[0]);
 
         if (count != 1)
             s.push_back(count);
+
+        chars.clear();
+
+        for (int i = 0; i < s.size(); i++) {
+            chars.push_back(s[i]);
+        }
   
         return s.size();
     }
