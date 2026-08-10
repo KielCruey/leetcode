@@ -8,25 +8,41 @@ public:
         bool isYourTurn = true;
 
         while (!piles.empty()) {
-            if (std::min(piles.front(), piles.back())) {
-                if (piles.size() >= 2 && std::min(piles[1], piles[piles.size() - 2])) {
-                    if (isYourTurn) you += piles.front();
-                    else opponent += piles.front();
+            if (piles.size() >= 4) {
+                if (std::min(piles.front(), piles.back())) {
+                    if (std::min(piles[1], piles[piles.size() - 2])) {
+                        if (isYourTurn) you += piles.front();
+                        else opponent += piles.front();
 
-                    piles.erase(piles.begin());
-                }
+                        piles.erase(piles.begin());
+                    }
+                    else {
+                        if (isYourTurn) you += piles.back();
+                        else opponent += piles.back();
+
+                        piles.pop_back();
+                    }
+                }  
                 else {
                     if (isYourTurn) you += piles.back();
                     else opponent += piles.back();
 
                     piles.pop_back();
                 }
-            }  
+            }
             else {
-                if (isYourTurn) you += piles.back();
-                else opponent += piles.back();
+                if (std::min(piles.front(), piles.back())) {
+                    if (isYourTurn) you += piles.back();
+                    else opponent += piles.back();
 
-                piles.pop_back();
+                    piles.pop_back();
+                }
+                else {
+                    if (isYourTurn) you += piles.front();
+                    else opponent += piles.front();
+
+                    piles.erase(piles.begin());
+                }
             }
 
             isYourTurn = !isYourTurn; // toggle
